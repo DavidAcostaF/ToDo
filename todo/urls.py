@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
-from apps.todo import views 
+from apps.todo import views
+from apps.usuarios.views import Register,Login,logoutUsuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.Todo.as_view(),name='index'),
     path('',include(('apps.todo.urls'))),
+    path('accounts/register',Register.as_view(),name ='register'),
+    path('accounts/login',Login.as_view(),name ='login'),
+    path('accounts/logout',logoutUsuario,name ='logout'),
 ]

@@ -14,7 +14,6 @@ function toDo(){
     }
 
     tbody = document.getElementById('tbody')
-    console.log(content,tbody)
     if (content){
         tbody.innerHTML += `
         <tr>
@@ -34,5 +33,8 @@ function toDo(){
 }
 
 function deleteTask(id){
-    task
+    task = document.getElementById(`task_${id}`)
+    console.log(task)
+    setTimeout(task.innerHTML = "",200)
+    $('#modal').modal('hide')
 }

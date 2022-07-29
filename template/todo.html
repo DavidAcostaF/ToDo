@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {%load static%}
-
+{%block title%}
+ToDo
+{%endblock title%}
 {%block body%}
 <h4 class="text-center my-3 pb-3">To Do App</h4>
 <form class="row row-cols-lg-auto g-3
@@ -36,14 +38,12 @@
     </thead>
     <tbody id="tbody">
         {% for task in progress%}
-        <tr>
+        <tr id="task_{{task.id}}">
             <th scope="row">{{forloop.counter}}</th>
             <td>{{task.content}}</td>
             <td>{{task.get_status_display}}</td>
             <td>
-                <button class="btn
-                    btn-danger" style="width:
-                    84px;" hx-get="{%url 'delete_todo' task.id%}"
+                <button class="btn btn-danger" style="width:84px;" hx-get="{%url 'delete_todo' task.id%}"
                     hx-target="#dialog">Delete</button>
                 <form action="{%url 'end_task' task.id%}" method="post">{%csrf_token%}
                     <button

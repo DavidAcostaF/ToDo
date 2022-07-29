@@ -61,7 +61,7 @@ class EndTask(UpdateView):
         if task:
             task.status = 1
             task.save()
-        return HttpResponse(status = 204)
+        return redirect('index')
 
 class FinishedTask(View):
     model = models.ToDo
