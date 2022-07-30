@@ -3,5 +3,6 @@ from apps.todo import views
 urlpatterns = [
     path('delete_todo/<int:pk>',views.DeleteTodo.as_view(),name='delete_todo'),
     path('end_task/<int:pk>',views.EndTask.as_view(),name = 'end_task'),
-    path('finished_task/',views.FinishedTask.as_view(),name= 'finished_task')
+    path('finished_task/',views.FinishedTask.as_view(),name= 'finished_task'),
+    path('update_task/<int:pk>',views.UpdateTask.as_view(),name='update_task')
 ]

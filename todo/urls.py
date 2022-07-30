@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.Todo.as_view(),name='index'),
     path('',include(('apps.todo.urls'))),
-    path('accounts/register',Register.as_view(),name ='register'),
-    path('accounts/login',Login.as_view(),name ='login'),
-    path('accounts/logout',logoutUsuario,name ='logout'),
+    path('accounts/register/',Register.as_view(),name ='register'),
+    path('accounts/login/',Login.as_view(),name ='login'),
+    path('accounts/logout/',logoutUsuario,name ='logout'),
 ]

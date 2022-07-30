@@ -10,10 +10,10 @@ ToDo
     mb-4 pb-2" method="post">{% csrf_token %}
     <div class="col-12">
         <div class="form-floating">
-            <input type="text" id="si" class="form-control content"
+            <input type="text" id="task" class="form-control content"
                 name="content" placeholder="Enter a task here"
                 required />
-            <label for="si">Enter a task here</label>
+            <label for="task">Enter a task here</label>
         </div>
     </div>
 
@@ -40,7 +40,8 @@ ToDo
         {% for task in progress%}
         <tr id="task_{{task.id}}">
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{task.content}}</td>
+            <td title="Double click to update" hx-get="{%url 'update_task' task.id%}"
+            hx-target="#dialog" hx-trigger="dblclick">{{task.content}}</td>
             <td>{{task.get_status_display}}</td>
             <td>
                 <button class="btn btn-danger" style="width:84px;" hx-get="{%url 'delete_todo' task.id%}"
