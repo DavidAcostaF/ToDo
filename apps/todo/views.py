@@ -7,8 +7,9 @@ import json
 from apps.todo import models 
 from apps.todo import forms
 # Create your views here.
+from apps.usuarios.mixins import LoginRequiredMixin
 
-class Todo(View):
+class Todo(LoginRequiredMixin,View):
     model = models.ToDo
     template_name = 'todo.html'
     #success_url = reverse_lazy('index')
@@ -41,7 +42,7 @@ class Todo(View):
         }
         return render(request,self.template_name,context)
 
-class DeleteTodo(UpdateView):
+class DeleteTodo(LoginRequiredMixin,UpdateView):
     model = models.ToDo
     template_name = 'tasks/delete_tasks.html'
     def get(self,request,pk):
@@ -56,7 +57,7 @@ class DeleteTodo(UpdateView):
         todo.delete()
         return HttpResponse(status = 204)
 
-class EndTask(UpdateView):
+class EndTask(LoginRequiredMixin,UpdateView):
     model = models.ToDo
     def post(self,request,pk):
         task = self.model.objects.get(id = pk)
@@ -65,7 +66,7 @@ class EndTask(UpdateView):
             task.save()
         return redirect('index')
 
-class FinishedTask(View):
+class FinishedTask(LoginRequiredMixin,View):
     model = models.ToDo
     template_name = 'tasks/finished_tasks.html'
     success_url = reverse_lazy('index')
@@ -77,7 +78,7 @@ class FinishedTask(View):
         }
         return render(request,self.template_name,context)
 
-class UpdateTask(UpdateView):
+class UpdateTask(LoginRequiredMixin,UpdateView):
     model = models.ToDo
     template_name = 'tasks/update_task.html'
 
