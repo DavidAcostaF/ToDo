@@ -22,9 +22,10 @@ ToDo
             btn-primary" >Save</button>
     </div>
 </form>
-<div class="col-12">
+<h3>You have {{progress.count}} incompletes tasks</h3>
+<div class="" style="float: right;">
     <a href="{%url 'finished_task'%}" class="btn
-        btn-warning">Get tasks</a>
+        btn-warning">Finished Task</a>
 </div>
 
 <table class="table mb-4">
@@ -47,9 +48,9 @@ ToDo
                 <button class="btn btn-danger" style="width:84px;" hx-get="{%url 'delete_todo' task.id%}"
                     hx-target="#dialog">Delete</button>
                 <form action="{%url 'end_task' task.id%}" method="post">{%csrf_token%}
-                    <button
+                    <button style="width:84px;"
                         type="submit" class="btn
-                        btn-success">Finished</button></form>
+                        btn-success">Finish</button></form>
             </td>
         </tr>
         {% endfor %}

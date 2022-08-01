@@ -1,5 +1,5 @@
 from django.http import HttpResponse,HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView,CreateView
 from django.views.generic.edit import FormView
@@ -36,6 +36,7 @@ class Register(CreateView):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('login')
         return HttpResponse(status = 204)
 
 def logoutUsuario(request):

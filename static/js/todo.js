@@ -33,8 +33,11 @@ function toDo(){
 }
 
 function deleteTask(id){
+    let $ = jQuery.noConflict()
     task = document.getElementById(`task_${id}`)
-    console.log(task)
     setTimeout(task.innerHTML = "",200)
-    $('#modal').modal('hide')
+    const modal = new bootstrap.Modal(document.getElementById('modal'))
+    console.log(modal)
+    modal.hide()
+    $('modal').modal('dispose')
 }

@@ -55,7 +55,7 @@ class DeleteTodo(LoginRequiredMixin,UpdateView):
     def post(self,request,pk):
         todo = self.model.objects.get(id = pk)
         todo.delete()
-        return HttpResponse(status = 204)
+        return redirect(request.META.get('HTTP_REFERER'))
 
 class EndTask(LoginRequiredMixin,UpdateView):
     model = models.ToDo
