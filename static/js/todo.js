@@ -25,7 +25,6 @@ function toDo(){
                     btn-danger" style="width:
                     84px;">Delete</button>
                 <form method="post"><button
-                
                 type="submit" class="btn
                 btn-success">Finished</button></form>
             </td>
